@@ -1,0 +1,23 @@
+import numpy as np
+from scipy.fft import dct
+
+sinal = np.array([10, 12, 15, 16, 15, 12, 10, 9])
+coef_1d = dct(sinal, type=2, norm='ortho')
+print("Sinal original:")
+print(sinal)
+print("\nCoeficientes da DCT 1D:")
+print(coef_1d)
+imagem = np.array([
+    [10, 12, 15, 16],
+    [10, 12, 15, 16],
+    [11, 13, 16, 17],
+    [11, 13, 16, 17]
+], dtype=float)
+dct2 = dct(
+    dct(imagem, axis=0, type=2, norm='ortho'),
+    axis=1, type=2, norm='ortho'
+)
+print("\nImagem original:")
+print(imagem)
+print("\nCoeficientes da DCT 2D:")
+print(dct2)
